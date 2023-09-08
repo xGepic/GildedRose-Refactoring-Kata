@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using csharp.Tests;
+using NUnit.Framework;
 using System.Collections.Generic;
 
 namespace csharp
@@ -6,12 +7,6 @@ namespace csharp
     [TestFixture]
     public class GildedRoseTest
     {
-        public static void CustomItemAssertEquals(Item expected, Item actual)
-        {
-            Assert.AreEqual(expected.Name, actual.Name);
-            Assert.AreEqual(expected.SellIn, actual.SellIn);
-            Assert.AreEqual(expected.Name, actual.Name);
-        }
         [Test]
         public void EndOfDaySellInAndQualityDecrease()
         {
@@ -20,7 +15,7 @@ namespace csharp
             //Act 
             app.UpdateQuality();
             //Assert
-            CustomItemAssertEquals(new Item { Name = "Aged Item", SellIn = 1, Quality = 1 }, app.GetItems()[0]);
+            TestUtil.CustomItemAssertEquals(new Item { Name = "Aged Item", SellIn = 1, Quality = 1 }, app.GetItems()[0]);
         }
         [Test]
         public void SellByDatePassedAndQualityDecreasesTwice()
@@ -30,7 +25,7 @@ namespace csharp
             //Act
             app.UpdateQuality();
             //Assert
-            CustomItemAssertEquals(new Item { Name = "Aged Item", SellIn = -1, Quality = 0 }, app.GetItems()[0]);
+            TestUtil.CustomItemAssertEquals(new Item { Name = "Aged Item", SellIn = -1, Quality = 0 }, app.GetItems()[0]);
         }
     }
 }
