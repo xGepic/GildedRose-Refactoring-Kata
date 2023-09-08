@@ -7,7 +7,6 @@ namespace csharp
         private const string AGEDBRIE = "Aged Brie";
         private const string SULFURAS = "Sulfuras, Hand of Ragnaros";
         private const string BACKSTAGEPASS = "Backstage passes to a TAFKAL80ETC concert";
-        private const int DEGRADERATE = -1;
         private readonly List<string> ItemNames = new List<string> { AGEDBRIE, SULFURAS, BACKSTAGEPASS };
         private readonly IList<Item> Items;
         public GildedRose(IList<Item> items) => Items = items;
@@ -36,7 +35,7 @@ namespace csharp
             }
             if (!ItemNames.Contains(item.Name))
             {
-                AdjustQuality(item, DEGRADERATE);
+                AdjustQuality(item, -1);
             }
             if (isExpired)
             {
@@ -63,7 +62,7 @@ namespace csharp
         {
             if (!ItemNames.Contains(item.Name))
             {
-                AdjustQuality(item, DEGRADERATE);
+                AdjustQuality(item, -1);
             }
             if (item.Name == AGEDBRIE)
             {
