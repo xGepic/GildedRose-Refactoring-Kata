@@ -4,12 +4,9 @@ namespace csharp
 {
     public class GildedRose
     {
-        IList<Item> Items;
-        public GildedRose(IList<Item> Items)
-        {
-            this.Items = Items;
-        }
-
+        private readonly IList<Item> Items;
+        public GildedRose(IList<Item> items) => Items = items;
+        public IList<Item> GetItems() => Items;
         public void UpdateQuality()
         {
             for (var i = 0; i < Items.Count; i++)
@@ -39,7 +36,6 @@ namespace csharp
                                     Items[i].Quality = Items[i].Quality + 1;
                                 }
                             }
-
                             if (Items[i].SellIn < 6)
                             {
                                 if (Items[i].Quality < 50)
@@ -50,12 +46,10 @@ namespace csharp
                         }
                     }
                 }
-
                 if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                 {
                     Items[i].SellIn = Items[i].SellIn - 1;
                 }
-
                 if (Items[i].SellIn < 0)
                 {
                     if (Items[i].Name != "Aged Brie")

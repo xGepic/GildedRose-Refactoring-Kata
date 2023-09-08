@@ -6,13 +6,21 @@ namespace csharp
     [TestFixture]
     public class GildedRoseTest
     {
-        [Test]
-        public void Foo()
+        public static void CustomItemAssertEquals(Item expected, Item actual)
         {
-            IList<Item> Items = new List<Item> { new Item { Name = "fixme", SellIn = 0, Quality = 0 } };
-            GildedRose app = new GildedRose(Items);
+            Assert.AreEqual(expected.Name, actual.Name);
+            Assert.AreEqual(expected.SellIn, actual.SellIn);
+            Assert.AreEqual(expected.Name, actual.Name);
+        }
+        [Test]
+        public void EndOfDaySellInAndQualityDecrease()
+        {
+            //Arrange
+            GildedRose app = new GildedRose(new List<Item> { new Item { Name = "Aged Item", SellIn = 2, Quality = 2 } });
+            //Act 
             app.UpdateQuality();
-            Assert.AreEqual("fixme", Items[0].Name);
+            //Assert
+            CustomItemAssertEquals(new Item { Name = "Aged Item", SellIn = 1, Quality = 1 }, app.GetItems()[0]);
         }
     }
 }
