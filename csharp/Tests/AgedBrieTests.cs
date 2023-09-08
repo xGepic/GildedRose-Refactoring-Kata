@@ -21,11 +21,11 @@ namespace csharp
         public void AgedBrieSellByDatePassedAndQualityDecreasesTwice()
         {
             //Arrange
-            GildedRose app = new GildedRose(new List<Item> { new Item { Name = "Aged Brie", SellIn = 0, Quality = 4 } });
+            GildedRose app = new GildedRose(new List<Item> { new Item { Name = "Aged Brie", SellIn = 0, Quality = 2 } });
             //Act
             app.UpdateQuality();
             //Assert
-            TestUtil.CustomItemAssertEquals(new Item { Name = "Aged Brie", SellIn = -1, Quality = 0 }, app.GetItems()[0]);
+            TestUtil.CustomItemAssertEquals(new Item { Name = "Aged Brie", SellIn = -1, Quality = 4 }, app.GetItems()[0]);
         }
         [Test]
         public void AgedBrieQualityIsNeverOver50()

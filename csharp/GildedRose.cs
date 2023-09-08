@@ -7,6 +7,7 @@ namespace csharp
         private const string AGEDBRIE = "Aged Brie";
         private const string SULFURAS = "Sulfuras, Hand of Ragnaros";
         private const string BACKSTAGEPASS = "Backstage passes to a TAFKAL80ETC concert";
+        private readonly List<string> ItemNames = new List<string> { AGEDBRIE, SULFURAS, BACKSTAGEPASS };
         private readonly IList<Item> Items;
         public GildedRose(IList<Item> items) => Items = items;
         public IList<Item> GetItems() => Items;
@@ -19,37 +20,22 @@ namespace csharp
         }
         private void UpdateItemQuality(Item item)
         {
-            if (item.Name != AGEDBRIE && item.Name != BACKSTAGEPASS)
+            if (!ItemNames.Contains(item.Name))
             {
-                if (item.Quality > 0)
-                {
-                    if (item.Name != SULFURAS)
-                    {
-                        item.Quality--;
-                    }
-                }
+                AdjustQuality(item, -1);
             }
             else
             {
-                if (item.Quality < 50)
+                AdjustQuality(item, 1);
+                if (item.Name == BACKSTAGEPASS)
                 {
-                    item.Quality++;
-                    if (item.Name == BACKSTAGEPASS)
+                    if (item.SellIn < 11)
                     {
-                        if (item.SellIn < 11)
-                        {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality++;
-                            }
-                        }
-                        if (item.SellIn < 6)
-                        {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality++;
-                            }
-                        }
+                        AdjustQuality(item, 1);
+                    }
+                    if (item.SellIn < 6)
+                    {
+                        AdjustQuality(item, 1);
                     }
                 }
             }
@@ -61,28 +47,32 @@ namespace csharp
             {
                 if (item.Name != AGEDBRIE)
                 {
-                    if (item.Name != BACKSTAGEPASS)
+                    if (item.Name != BACKSTAGEPASS && item.Name != SULFURAS)
                     {
-                        if (item.Quality > 0)
-                        {
-                            if (item.Name != SULFURAS)
-                            {
-                                item.Quality--;
-                            }
-                        }
+                        AdjustQuality(item, -1);
                     }
                     else
                     {
-                        item.Quality -= item.Quality;
+                        AdjustQuality(item, 0);
                     }
                 }
                 else
                 {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality++;
-                    }
+                    AdjustQuality(item, +1);
                 }
+            }
+        }
+        private static void AdjustQuality(Item item, int adjustment)
+        {
+            int newQuality = item.Quality + adjustment;
+            bool inRange = newQuality <= 50 && newQuality >= 0;
+            if (adjustment is 0)
+            {
+                item.Quality = 0;
+            }
+            if (inRange)
+            {
+                item.Quality += adjustment;
             }
         }
     }
