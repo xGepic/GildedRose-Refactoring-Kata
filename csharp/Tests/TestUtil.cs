@@ -8,7 +8,7 @@ namespace csharp.Tests
         {
             Assert.AreEqual(expected.Name, actual.Name);
             Assert.AreEqual(expected.SellIn, actual.SellIn);
-            Assert.AreEqual(expected.Name, actual.Name);
+            Assert.AreEqual(expected.Quality, actual.Quality);
         }
     }
 }
