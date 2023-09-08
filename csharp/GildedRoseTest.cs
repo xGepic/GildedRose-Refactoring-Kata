@@ -22,5 +22,15 @@ namespace csharp
             //Assert
             CustomItemAssertEquals(new Item { Name = "Aged Item", SellIn = 1, Quality = 1 }, app.GetItems()[0]);
         }
+        [Test]
+        public void SellByDatePassedAndQualityDecreasesTwice()
+        {
+            //Arrange
+            GildedRose app = new GildedRose(new List<Item> { new Item { Name = "Aged Item", SellIn = 0, Quality = 2 } });
+            //Act
+            app.UpdateQuality();
+            //Assert
+            CustomItemAssertEquals(new Item { Name = "Aged Item", SellIn = -1, Quality = 0 }, app.GetItems()[0]);
+        }
     }
 }
