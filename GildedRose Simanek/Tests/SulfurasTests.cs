@@ -9,7 +9,7 @@ namespace csharp.Tests
         public void SulfurasNeverChanges()
         {
             //Arrange
-            GildedRose app = new GildedRose(new List<Item> { new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 100, Quality = 100 } });
+            NewGildedRose app = new NewGildedRose(new List<Item> { new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 100, Quality = 100 } });
             //Act
             app.UpdateQuality();
             //Assert

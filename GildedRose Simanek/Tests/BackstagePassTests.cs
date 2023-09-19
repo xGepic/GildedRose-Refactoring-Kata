@@ -9,7 +9,7 @@ namespace csharp.Tests
         public void BackstagePassIncreasesInQualityBy2WhenThereAre10DaysOrLess()
         {
             //Arrange
-            GildedRose app = new GildedRose(new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 2 } });
+            NewGildedRose app = new NewGildedRose(new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 2 } });
             //Act
             app.UpdateQuality();
             //Assert
@@ -19,7 +19,7 @@ namespace csharp.Tests
         public void BackstagePassIncreasesInQualityBy3WhenThereAre5DaysOrLess()
         {
             //Arrange
-            GildedRose app = new GildedRose(new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 2 } });
+            NewGildedRose app = new NewGildedRose(new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 2 } });
             //Act
             app.UpdateQuality();
             //Assert
@@ -29,7 +29,7 @@ namespace csharp.Tests
         public void BackstagePassIncreasesInQualityGoes0WhenSellInExpires()
         {
             //Arrange
-            GildedRose app = new GildedRose(new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 0, Quality = 20 } });
+            NewGildedRose app = new NewGildedRose(new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 0, Quality = 20 } });
             //Act
             app.UpdateQuality();
             //Assert

@@ -2,14 +2,14 @@
 
 namespace csharp
 {
-    public class GildedRose
+    public class NewGildedRose
     {
         private const string AGEDBRIE = "Aged Brie";
         private const string SULFURAS = "Sulfuras, Hand of Ragnaros";
         private const string BACKSTAGEPASS = "Backstage passes to a TAFKAL80ETC concert";
         private readonly List<string> ItemNames = new List<string> { AGEDBRIE, SULFURAS, BACKSTAGEPASS };
         private readonly IList<Item> Items;
-        public GildedRose(IList<Item> items) => Items = items;
+        public NewGildedRose(IList<Item> items) => Items = items;
         public IList<Item> GetItems() => Items;
         public void UpdateQuality()
         {

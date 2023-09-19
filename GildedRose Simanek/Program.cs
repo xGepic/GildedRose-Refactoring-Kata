@@ -33,7 +33,7 @@ namespace csharp
                     Quality = 49
                 },
             };
-            var app = new GildedRose(Items);
+            var app = new NewGildedRose(Items);
             for (var i = 0; i < 31; i++)
             {
                 Console.WriteLine("-------- day " + i + " --------");

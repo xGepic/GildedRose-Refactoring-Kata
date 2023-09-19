@@ -11,7 +11,7 @@ namespace csharp
         public void AgedBrieSellInAndQualityDecrease()
         {
             //Arrange
-            GildedRose app = new GildedRose(new List<Item> { new Item { Name = "Aged Brie", SellIn = 2, Quality = 2 } });
+            NewGildedRose app = new NewGildedRose(new List<Item> { new Item { Name = "Aged Brie", SellIn = 2, Quality = 2 } });
             //Act 
             app.UpdateQuality();
             //Assert
@@ -21,7 +21,7 @@ namespace csharp
         public void AgedBrieSellByDatePassedAndQualityDecreasesTwice()
         {
             //Arrange
-            GildedRose app = new GildedRose(new List<Item> { new Item { Name = "Aged Brie", SellIn = 0, Quality = 2 } });
+            NewGildedRose app = new NewGildedRose(new List<Item> { new Item { Name = "Aged Brie", SellIn = 0, Quality = 2 } });
             //Act
             app.UpdateQuality();
             //Assert
@@ -31,7 +31,7 @@ namespace csharp
         public void AgedBrieQualityIsNeverOver50()
         {
             //Arrange
-            GildedRose app = new GildedRose(new List<Item> { new Item { Name = "Aged Brie", SellIn = 2, Quality = 50 } });
+            NewGildedRose app = new NewGildedRose(new List<Item> { new Item { Name = "Aged Brie", SellIn = 2, Quality = 50 } });
             //Act
             app.UpdateQuality();
             //Assert

@@ -9,7 +9,7 @@ namespace csharp.Tests
         public void TheQualityOfAnItemIsNeverNegative()
         {
             //Arrange
-            GildedRose app = new GildedRose(new List<Item> { new Item { Name = "Random Item", SellIn = 0, Quality = 0 } });
+            NewGildedRose app = new NewGildedRose(new List<Item> { new Item { Name = "Random Item", SellIn = 0, Quality = 0 } });
             //Act
             app.UpdateQuality();
             //Assert
