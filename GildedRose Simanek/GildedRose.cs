@@ -39,7 +39,7 @@ namespace csharp
             }
             if (isExpired)
             {
-                HandleIsExpired(item);
+                HandleExpiredItem(item);
             }
         }
         private void HandleBackstagePass(Item item, bool isExpired)
@@ -58,7 +58,7 @@ namespace csharp
                 AdjustQuality(item, 0);
             }
         }
-        private void HandleIsExpired(Item item)
+        private void HandleExpiredItem(Item item)
         {
             if (!ItemNames.Contains(item.Name))
             {
